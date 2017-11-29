@@ -9,7 +9,7 @@ public class CallCenter {
 
     public CallCenter() {
         this.operators = new ArrayList<Operator>();
-        this.operators.add(new Operator());
+        this.operators.add(new Operator("default"));
         this.supervisors = new ArrayList<Supervisor>();
         this.supervisors.add(new Supervisor());
         this.directors = new ArrayList<Director>();
