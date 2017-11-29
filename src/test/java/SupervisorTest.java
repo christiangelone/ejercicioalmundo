@@ -13,4 +13,11 @@ public class SupervisorTest {
         assertEquals(Employee.TYPE_SUPERVISOR,type);
     }
 
+    @Test
+    public void shouldHaveName(){
+        final String assignedName = "default";
+        supervisor = new Supervisor(assignedName);
+        String name = supervisor.getName();
+        assertEquals(assignedName,name);
+    }
 }
