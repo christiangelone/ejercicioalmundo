@@ -1,4 +1,5 @@
 Operator.class
+Director.class
 CallCenter.class
 Employee.class
 Supervisor.class

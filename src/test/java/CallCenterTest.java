@@ -22,4 +22,10 @@ public class CallCenterTest {
         Integer numberOfSupervisors = this.callCenter.getSupervisors().size();
         assertTrue(numberOfSupervisors >= 1);
     }
+
+    @Test
+    public void shouldHaveAtLeastIOneDirector(){
+        Integer numberOfDirectors = this.callCenter.getDirectors().size();
+        assertTrue(numberOfDirectors >= 1);
+    }
 }
