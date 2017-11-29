@@ -13,7 +13,7 @@ public class CallCenter {
         this.supervisors = new ArrayList<Supervisor>();
         this.supervisors.add(new Supervisor("DefaultSupervisor"));
         this.directors = new ArrayList<Director>();
-        this.directors.add(new Director());
+        this.directors.add(new Director("DefaultDirector"));
     }
 
     public List<Operator> getOperators() {
