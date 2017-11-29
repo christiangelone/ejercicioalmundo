@@ -1,6 +1,7 @@
 public abstract class Employee {
 
     public static final String TYPE_OPERATOR = "OPERATOR";
+    public static final String TYPE_SUPERVISOR = "SUPERVISOR" ;
     private final String name;
     private final String type;
 

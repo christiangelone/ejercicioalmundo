@@ -9,9 +9,9 @@ public class CallCenter {
 
     public CallCenter() {
         this.operators = new ArrayList<Operator>();
-        this.operators.add(new Operator("default"));
+        this.operators.add(new Operator("DefaultOperator"));
         this.supervisors = new ArrayList<Supervisor>();
-        this.supervisors.add(new Supervisor());
+        this.supervisors.add(new Supervisor("DefaultSupervisor"));
         this.directors = new ArrayList<Director>();
         this.directors.add(new Director());
     }
