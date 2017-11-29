@@ -13,4 +13,12 @@ public class DirectorTest {
         assertEquals(Employee.TYPE_DIRECTOR,type);
     }
 
+    @Test
+    public void shouldHaveName(){
+        final String assignedName = "default";
+        director = new Operator(assignedName);
+        String name = director.getName();
+        assertEquals(assignedName,name);
+    }
+
 }
