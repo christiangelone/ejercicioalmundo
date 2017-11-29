@@ -13,4 +13,12 @@ public class OperatorTest {
         assertEquals(Employee.TYPE_OPERATOR,type);
     }
 
+    @Test
+    public void shouldHaveName(){
+        final String assignedName = "default";
+        operator = new Operator(assignedName);
+        String name = operator.getName();
+        assertEquals(assignedName,name);
+    }
+
 }
