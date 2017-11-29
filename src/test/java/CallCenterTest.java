@@ -16,4 +16,10 @@ public class CallCenterTest {
         Integer numberOfOperators = this.callCenter.getOperators().size();
         assertTrue(numberOfOperators >= 1);
     }
+
+    @Test
+    public void shouldHaveAtLeastIOneSupervisor(){
+        Integer numberOfSupervisors = this.callCenter.getSupervisors().size();
+        assertTrue(numberOfSupervisors >= 1);
+    }
 }
