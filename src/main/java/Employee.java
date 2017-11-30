@@ -1,4 +1,4 @@
-public abstract class Employee {
+public abstract class Employee implements Attendant {
 
     public static final String TYPE_OPERATOR = "OPERATOR";
     public static final String TYPE_SUPERVISOR = "SUPERVISOR" ;
