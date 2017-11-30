@@ -20,6 +20,14 @@ public class DispatcherTest {
     }
 
     @Test
+    public void shouldHaveVerboseMode(){
+        List<List<Attendant>> attendantsGroups = new ArrayList<List<Attendant>>();
+        this.dispatcher = new Dispatcher(attendantsGroups);
+        this.dispatcher.setVerbose(true);
+        assertTrue(this.dispatcher.isVerbose());
+    }
+
+    @Test
     public void shouldRespondTenConcurrentCalls(){
         List<List<Attendant>> attendantsGroups = new ArrayList<List<Attendant>>();
         List<Attendant> operators = new ArrayList<>();

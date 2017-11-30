@@ -66,4 +66,8 @@ public class Dispatcher {
     public void setVerbose(boolean verbose) {
         this.verbose = verbose;
     }
+
+    public boolean isVerbose() {
+        return verbose;
+    }
 }
