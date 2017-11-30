@@ -12,13 +12,13 @@ public class DispatcherTest {
 
     @Before
     public void initialize(){
-        List<List<Attendants>> attendantsGroups = new ArrayList<List<Attendants>>();
+        List<List<Attendant>> attendantsGroups = new ArrayList<List<Attendant>>();
         this.dispatcher = new Dispatcher(attendantsGroups);
     }
 
     @Test
     public void shouldHaveAttendantsGroup(){
-        List<List<Attendants>> groups = this.dispatcher.getAttendantsGroups();
+        List<List<Attendant>> groups = this.dispatcher.getAttendantsGroups();
         assertNotNull(groups);
     }
 

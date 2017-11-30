@@ -18,4 +18,11 @@ public abstract class Employee {
     public String getName() {
         return this.name;
     }
+
+    public boolean isBusy() {
+        return false;
+    }
+
+    public void answer(Call call) {
+    }
 }

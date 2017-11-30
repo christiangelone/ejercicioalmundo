@@ -21,4 +21,13 @@ public class OperatorTest {
         assertEquals(assignedName,name);
     }
 
+    @Test
+    public void shouldAnswerCallIfNotBusy(){
+        operator = new Operator("default");
+        Call call = new Call(5);
+        assertFalse(operator.isBusy());
+        operator.answer(call);
+        assertTrue(call.isAswered());
+    }
+
 }

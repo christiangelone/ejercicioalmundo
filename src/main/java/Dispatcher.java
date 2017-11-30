@@ -3,13 +3,13 @@ import java.util.List;
 public class Dispatcher {
 
 
-    private final List<List<Attendants>> attendantsGroups;
+    private final List<List<Attendant>> attendantsGroups;
 
-    public Dispatcher(List<List<Attendants>> attendantsGroups) {
+    public Dispatcher(List<List<Attendant>> attendantsGroups) {
         this.attendantsGroups = attendantsGroups;
     }
 
-    public List<List<Attendants>> getAttendantsGroups() {
+    public List<List<Attendant>> getAttendantsGroups() {
         return this.attendantsGroups;
     }
 }
