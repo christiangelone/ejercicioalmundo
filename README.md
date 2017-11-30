@@ -2,7 +2,7 @@
 
 ##CallCenter
 
-	Diagrama UML: diagrama_clases.uml
+	Diagrama UML: diagrama_clases.png
 	
 ###Correr Tests
 	~$ mvn test
