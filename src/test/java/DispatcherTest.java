@@ -12,7 +12,9 @@ public class DispatcherTest {
     @Test
     public void shouldHaveAttendantsGroup(){
         List<List<Attendant>> attendantsGroups = new ArrayList<List<Attendant>>();
-        this.dispatcher = new Dispatcher(attendantsGroups);
+        this.dispatcher = new Dispatcher();
+        this.dispatcher.setAttendantsGroups(attendantsGroups);
+
         List<List<Attendant>> groups = this.dispatcher.getAttendantsGroups();
         assertNotNull(groups);
     }
@@ -20,7 +22,8 @@ public class DispatcherTest {
     @Test
     public void shouldHaveVerboseMode(){
         List<List<Attendant>> attendantsGroups = new ArrayList<List<Attendant>>();
-        this.dispatcher = new Dispatcher(attendantsGroups);
+        this.dispatcher = new Dispatcher();
+        this.dispatcher.setAttendantsGroups(attendantsGroups);
         this.dispatcher.setVerbose(true);
         assertTrue(this.dispatcher.isVerbose());
     }
@@ -34,7 +37,8 @@ public class DispatcherTest {
         }
 
         attendantsGroups.add(operators);
-        this.dispatcher = new Dispatcher(attendantsGroups);
+        this.dispatcher = new Dispatcher();
+        this.dispatcher.setAttendantsGroups(attendantsGroups);
 
         List<Call> calls = new ArrayList<Call>();
         for (int i = 0; i < 10; i++) {
@@ -47,7 +51,8 @@ public class DispatcherTest {
     @Test
     public void shouldNotDispatchCallIfThereAreNoAttendances(){
         List<List<Attendant>> attendantsGroups = new ArrayList<List<Attendant>>();
-        this.dispatcher = new Dispatcher(attendantsGroups);
+        this.dispatcher = new Dispatcher();
+        this.dispatcher.setAttendantsGroups(attendantsGroups);
 
         List<Call> calls = new ArrayList<Call>();
         for (int i = 0; i < 10; i++) {

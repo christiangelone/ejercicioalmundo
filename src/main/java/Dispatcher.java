@@ -3,7 +3,7 @@ import java.util.List;
 public class Dispatcher {
 
 
-    private final List<List<Attendant>> attendantsGroups;
+    private List<List<Attendant>> attendantsGroups;
 
     private Boolean verbose;
     private Integer numberOfCallsdDispatched;
@@ -39,7 +39,7 @@ public class Dispatcher {
     }
 
     private Boolean noAttendants() {
-        return attendantsGroups.isEmpty();
+        return attendantsGroups == null || attendantsGroups.isEmpty();
     }
 
     private void dispatchCall(Call call){
@@ -51,9 +51,7 @@ public class Dispatcher {
         }
     }
 
-    public Dispatcher(List<List<Attendant>> attendantsGroups) {
-
-        this.attendantsGroups = attendantsGroups;
+    public Dispatcher() {
         this.numberOfCallsdDispatched = 0;
         this.verbose = false;
     }
@@ -73,6 +71,10 @@ public class Dispatcher {
             }
             return numberOfCallsdDispatched;
         }
+    }
+
+    public void setAttendantsGroups(List<List<Attendant>> attendantsGroups) {
+        this.attendantsGroups = attendantsGroups;
     }
 
     public void setVerbose(Boolean verbose) {

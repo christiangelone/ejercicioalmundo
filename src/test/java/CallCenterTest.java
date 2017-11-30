@@ -44,4 +44,11 @@ public class CallCenterTest {
     public void shouldHaveDispatcher(){
         assertNotNull(callCenter.getDispatcher());
     }
+
+    @Test
+    public void shouldChangeDispatcher(){
+        Dispatcher otherDispatcher = new Dispatcher();
+        callCenter.setDispatcher(otherDispatcher);
+        assertEquals(otherDispatcher,callCenter.getDispatcher());
+    }
 }

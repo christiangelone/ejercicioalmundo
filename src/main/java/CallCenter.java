@@ -19,7 +19,8 @@ public class CallCenter {
         this.supervisors.add(new Supervisor("DefaultSupervisor"));
         this.directors = new ArrayList<Director>();
         this.directors.add(new Director("DefaultDirector"));
-        this.dispatcher = new Dispatcher(Arrays.<List<Attendant>>asList(
+        this.dispatcher = new Dispatcher();
+        this.dispatcher.setAttendantsGroups(Arrays.<List<Attendant>>asList(
                 operatorsToAttendants(this.operators),
                 supervisorsToAttendants(this.supervisors),
                 directorsToAttendants(this.directors)
@@ -68,5 +69,14 @@ public class CallCenter {
 
     public Dispatcher getDispatcher() {
         return this.dispatcher;
+    }
+
+    public void setDispatcher(Dispatcher dispatcher) {
+        this.dispatcher = dispatcher;
+        this.dispatcher.setAttendantsGroups(Arrays.<List<Attendant>>asList(
+                operatorsToAttendants(this.operators),
+                supervisorsToAttendants(this.supervisors),
+                directorsToAttendants(this.directors)
+        ));
     }
 }
