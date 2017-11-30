@@ -94,10 +94,10 @@ public class Dispatcher {
                         .collect(Collectors.toList());
 
                 //no concurrent works!
-                filteredCalls.stream().forEach(c -> dispatchCall(c));
+                //filteredCalls.stream().forEach(c -> dispatchCall(c));
 
                 //concurrent works!
-                //dispatchThreadCalls(filteredCalls);
+                dispatchThreadCalls(filteredCalls);
             }
             return true;
         }
