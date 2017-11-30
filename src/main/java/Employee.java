@@ -22,15 +22,22 @@ public abstract class Employee implements Attendant {
         return this.name;
     }
 
+    @Override
     public boolean isBusy() {
         return this.busy;
     }
 
+    @Override
     public void answer(Call call) {
         if(!isBusy()){
-            this.call = call;
-            this.call.answer();
+            call.setAttendant(this);
+            call.answer();
             this.busy = true;
         }
+    }
+
+    @Override
+    public void free() {
+        this.busy = false;
     }
 }

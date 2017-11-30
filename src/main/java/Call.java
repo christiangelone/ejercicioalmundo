@@ -2,6 +2,7 @@ public class Call {
     private boolean answered;
     private Integer minTime;
     private Integer maxTime;
+    private Attendant attendant;
 
     public Call(int minTimeInSeconds,int maxTimeInSeconds) {
         this.minTime = minTimeInSeconds;
@@ -23,5 +24,13 @@ public class Call {
 
     public Integer getMaxTime() {
         return this.maxTime;
+    }
+
+    public void end() {
+        this.attendant.free();
+    }
+
+    public void setAttendant(Attendant attendant) {
+        this.attendant = attendant;
     }
 }
