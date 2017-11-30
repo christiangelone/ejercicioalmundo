@@ -7,16 +7,6 @@ public class Dispatcher {
 
     private boolean verbose;
 
-    public Dispatcher(List<List<Attendant>> attendantsGroups) {
-
-        this.attendantsGroups = attendantsGroups;
-        this.verbose = false;
-    }
-
-    public List<List<Attendant>> getAttendantsGroups() {
-        return this.attendantsGroups;
-    }
-
     private boolean areAllAttendantsBusy(List<Attendant> attendants){
         return attendants.stream()
                 .map(a -> a.isBusy())
@@ -47,6 +37,10 @@ public class Dispatcher {
                 .orElse(null);
     }
 
+    private boolean noAttendants() {
+        return attendantsGroups.isEmpty();
+    }
+
     private void dispatchCall(Call call){
         List<Attendant> attendants = findFirstFreeAttendants();
         if(attendants != null){
@@ -55,12 +49,27 @@ public class Dispatcher {
         }
     }
 
+    public Dispatcher(List<List<Attendant>> attendantsGroups) {
+
+        this.attendantsGroups = attendantsGroups;
+        this.verbose = false;
+    }
+
+    public List<List<Attendant>> getAttendantsGroups() {
+        return this.attendantsGroups;
+    }
+
+
     public boolean dispatch(List<Call> calls) {
         if(verbose) System.out.println("Dispatching calls...");
-        while(!callsAnswered(calls)){
-            calls.stream().forEach(call -> dispatchCall(call));
+        if(noAttendants()){
+           return false;
+        }else{
+            while(!callsAnswered(calls)){
+                calls.stream().forEach(call -> dispatchCall(call));
+            }
+            return true;
         }
-        return true;
     }
 
     public void setVerbose(boolean verbose) {

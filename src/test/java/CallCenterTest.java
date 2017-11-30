@@ -13,8 +13,7 @@ public class CallCenterTest {
 
     @Before
     public void initialize(){
-        List<List<Attendant>> attendantsGroups = new ArrayList<List<Attendant>>();
-        this.callCenter = new CallCenter(this.name,attendantsGroups);
+        this.callCenter = new CallCenter(this.name);
     }
 
     @Test

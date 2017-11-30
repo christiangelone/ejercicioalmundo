@@ -28,7 +28,7 @@ public class DispatcherTest {
     }
 
     @Test
-    public void shouldRespondTenConcurrentCalls(){
+    public void shouldDispatchTenConcurrentCalls(){
         List<List<Attendant>> attendantsGroups = new ArrayList<List<Attendant>>();
         List<Attendant> operators = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -44,6 +44,19 @@ public class DispatcherTest {
         }
 
         assertTrue(this.dispatcher.dispatch(calls));
+    }
+
+    @Test
+    public void shouldNotDispatchCallIfThereAreNoAttendances(){
+        List<List<Attendant>> attendantsGroups = new ArrayList<List<Attendant>>();
+        this.dispatcher = new Dispatcher(attendantsGroups);
+
+        List<Call> calls = new ArrayList<Call>();
+        for (int i = 0; i < 10; i++) {
+            calls.add(new Call(5,10));
+        }
+
+        assertFalse(this.dispatcher.dispatch(calls));
     }
 
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CallCenter {
@@ -10,8 +11,7 @@ public class CallCenter {
     private Dispatcher dispatcher;
 
 
-    public CallCenter(String name,List<List<Attendant>> attendanceGroup) {
-        this.dispatcher = new Dispatcher(attendanceGroup);
+    public CallCenter(String name) {
         this.name = name;
         this.operators = new ArrayList<Operator>();
         this.operators.add(new Operator("DefaultOperator"));
@@ -19,6 +19,35 @@ public class CallCenter {
         this.supervisors.add(new Supervisor("DefaultSupervisor"));
         this.directors = new ArrayList<Director>();
         this.directors.add(new Director("DefaultDirector"));
+        this.dispatcher = new Dispatcher(Arrays.<List<Attendant>>asList(
+                operatorsToAttendants(this.operators),
+                supervisorsToAttendants(this.supervisors),
+                directorsToAttendants(this.directors)
+        ));
+    }
+
+    private List<Attendant> operatorsToAttendants(List<Operator> ops){
+        List<Attendant> attendants = new ArrayList<Attendant>();
+        for(Operator op: ops){
+            attendants.add((Attendant) op);
+        }
+        return attendants;
+    }
+
+    private List<Attendant> supervisorsToAttendants(List<Supervisor> sups){
+        List<Attendant> attendants = new ArrayList<Attendant>();
+        for(Supervisor sup: sups){
+            attendants.add((Attendant) sup);
+        }
+        return attendants;
+    }
+
+    private List<Attendant> directorsToAttendants(List<Director> dirs){
+        List<Attendant> attendants = new ArrayList<Attendant>();
+        for(Director dir: dirs){
+            attendants.add((Attendant) dir);
+        }
+        return attendants;
     }
 
     public List<Operator> getOperators() {
