@@ -44,7 +44,20 @@ public class CallTest {
         Integer assignedMaxTime = 10;
         call = new Call(assignedMinTime,assignedMaxTime);
 
-        Attendant attendant = new Supervisor("Op");
+        Attendant attendant = new Supervisor("Sup");
+        attendant.answer(call);
+
+        call.end();
+        assertFalse(attendant.isBusy());
+    }
+
+    @Test
+    public void shouldFreeDirectorWhenItEnd(){
+        Integer assignedMinTime = 5;
+        Integer assignedMaxTime = 10;
+        call = new Call(assignedMinTime,assignedMaxTime);
+
+        Attendant attendant = new Director("Dir");
         attendant.answer(call);
 
         call.end();
