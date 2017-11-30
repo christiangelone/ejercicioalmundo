@@ -38,4 +38,17 @@ public class CallTest {
         assertFalse(attendant.isBusy());
     }
 
+    @Test
+    public void shouldFreeSupervisorWhenItEnd(){
+        Integer assignedMinTime = 5;
+        Integer assignedMaxTime = 10;
+        call = new Call(assignedMinTime,assignedMaxTime);
+
+        Attendant attendant = new Supervisor("Op");
+        attendant.answer(call);
+
+        call.end();
+        assertFalse(attendant.isBusy());
+    }
+
 }
