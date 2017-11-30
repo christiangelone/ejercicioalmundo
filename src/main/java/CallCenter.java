@@ -6,8 +6,10 @@ public class CallCenter {
     private List<Operator> operators;
     private List<Supervisor> supervisors;
     private List<Director> directors;
+    private String name;
 
-    public CallCenter() {
+    public CallCenter(String name) {
+        this.name = name;
         this.operators = new ArrayList<Operator>();
         this.operators.add(new Operator("DefaultOperator"));
         this.supervisors = new ArrayList<Supervisor>();
@@ -26,5 +28,9 @@ public class CallCenter {
 
     public List<Director> getDirectors() {
         return directors;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

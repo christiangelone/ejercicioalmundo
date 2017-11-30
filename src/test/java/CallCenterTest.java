@@ -4,11 +4,18 @@ import static org.junit.Assert.*;
 
 public class CallCenterTest {
 
+    public String name = "CallCenter AlMundo";
     public CallCenter callCenter;
 
     @Before
     public void initialize(){
-        this.callCenter = new CallCenter();
+        this.callCenter = new CallCenter(this.name);
+    }
+
+    @Test
+    public void shouldHaveName(){
+        String name = this.callCenter.getName();
+        assertEquals(this.name,name);
     }
 
     @Test
