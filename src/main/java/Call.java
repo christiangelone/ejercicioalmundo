@@ -22,6 +22,7 @@ public class Call {
     public synchronized void answer() {
         new Thread(() -> {
            int randomSecs = ThreadLocalRandom.current().nextInt(minTime, maxTime + 1);
+            //System.out.println("RandomSec " + randomSecs);
             try {
                 Thread.sleep(randomSecs * 1000);
             } catch (InterruptedException e) {
