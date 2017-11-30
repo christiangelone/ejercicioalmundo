@@ -9,9 +9,19 @@ public class CallTest {
     @Test
     public void shouldHaveMinTime(){
         Integer assignedMinTime = 5;
-        call = new Call(assignedMinTime);
+        Integer assignedMaxTime = 10;
+        call = new Call(assignedMinTime,assignedMaxTime);
         Integer time = call.getMinTime();
         assertEquals(assignedMinTime,time);
+    }
+
+    @Test
+    public void shouldHaveMaxTimeDoubleThanMinTime(){
+        Integer assignedMinTime = 5;
+        Integer assignedMaxTime = 10;
+        call = new Call(assignedMinTime,assignedMaxTime);
+        Integer time = call.getMaxTime();
+        assertEquals(assignedMaxTime,time);
     }
 
 }

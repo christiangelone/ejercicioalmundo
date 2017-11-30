@@ -1,9 +1,11 @@
 public class Call {
     private boolean answered;
-    private Integer minDuration;
+    private Integer minTime;
+    private Integer maxTime;
 
-    public Call(int minDurationInSeconds) {
-        this.minDuration = minDurationInSeconds;
+    public Call(int minTimeInSeconds,int maxTimeInSeconds) {
+        this.minTime = minTimeInSeconds;
+        this.maxTime = maxTimeInSeconds;
         this.answered = false;
     }
 
@@ -16,6 +18,10 @@ public class Call {
     }
 
     public Integer getMinTime() {
-        return this.minDuration;
+        return this.minTime;
+    }
+
+    public Integer getMaxTime() {
+        return this.maxTime;
     }
 }
