@@ -65,10 +65,10 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="CallCenterTest" name="shouldHaveAtLeastIOneDirector" time="0.005"/>
-  <testcase classname="CallCenterTest" name="shouldHaveDispatcher" time="0"/>
-  <testcase classname="CallCenterTest" name="shouldChangeDispatcher" time="0.001"/>
-  <testcase classname="CallCenterTest" name="shouldHaveName" time="0.001"/>
-  <testcase classname="CallCenterTest" name="shouldHaveAtLeastIOneOperator" time="0.001"/>
+  <testcase classname="CallCenterTest" name="shouldHaveName" time="0.008"/>
+  <testcase classname="CallCenterTest" name="shouldHaveAtLeastIOneOperator" time="0"/>
   <testcase classname="CallCenterTest" name="shouldHaveAtLeastIOneSupervisor" time="0"/>
+  <testcase classname="CallCenterTest" name="shouldHaveAtLeastIOneDirector" time="0"/>
+  <testcase classname="CallCenterTest" name="shouldHaveDispatcher" time="0"/>
+  <testcase classname="CallCenterTest" name="shouldChangeDispatcher" time="0"/>
 </testsuite>
