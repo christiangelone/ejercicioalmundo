@@ -1,5 +1,5 @@
 public interface Attendant {
-    boolean isBusy();
+    Boolean isBusy();
     void answer(Call call);
     void free();
 }

@@ -1,8 +1,6 @@
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -43,7 +41,7 @@ public class DispatcherTest {
             calls.add(new Call(5,10));
         }
 
-        assertTrue(this.dispatcher.dispatch(calls));
+        assertEquals(new Integer(10),this.dispatcher.dispatch(calls));
     }
 
     @Test
@@ -56,7 +54,7 @@ public class DispatcherTest {
             calls.add(new Call(5,10));
         }
 
-        assertFalse(this.dispatcher.dispatch(calls));
+        assertEquals(new Integer(0),this.dispatcher.dispatch(calls));
     }
 
 }

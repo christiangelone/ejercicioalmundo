@@ -1,5 +1,5 @@
 public class Call {
-    private boolean answered;
+    private Boolean answered;
     private Integer minTime;
     private Integer maxTime;
     private Attendant attendant;
@@ -10,7 +10,7 @@ public class Call {
         this.answered = false;
     }
 
-    public boolean isAswered() {
+    public Boolean isAswered() {
         return this.answered;
     }
 

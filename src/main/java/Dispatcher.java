@@ -5,23 +5,24 @@ public class Dispatcher {
 
     private final List<List<Attendant>> attendantsGroups;
 
-    private boolean verbose;
+    private Boolean verbose;
+    private Integer numberOfCallsdDispatched;
 
-    private boolean areAllAttendantsBusy(List<Attendant> attendants){
+    private Boolean areAllAttendantsBusy(List<Attendant> attendants){
         return attendants.stream()
                 .map(a -> a.isBusy())
                 .reduce((busy1,busy2) -> busy1 && busy2)
                 .orElse(true);
     }
 
-    private boolean callsAnswered(List<Call> calls){
+    private Boolean callsAnswered(List<Call> calls){
         return calls.stream()
                 .map(call -> call.isAswered())
                 .reduce((answer1,answer2) -> answer1 && answer2)
                 .orElse(true);
     }
 
-    private List<Attendant> findFirstFreeAttendants(){
+    private List<Attendant> findFirstFreeAttendantsGroup(){
         for(List<Attendant> attendants: this.attendantsGroups){
             if(!areAllAttendantsBusy(attendants))
                 return attendants;
@@ -37,21 +38,23 @@ public class Dispatcher {
                 .orElse(null);
     }
 
-    private boolean noAttendants() {
+    private Boolean noAttendants() {
         return attendantsGroups.isEmpty();
     }
 
     private void dispatchCall(Call call){
-        List<Attendant> attendants = findFirstFreeAttendants();
+        List<Attendant> attendants = findFirstFreeAttendantsGroup();
         if(attendants != null){
             Attendant attendant = findAnyFreeAttendant(attendants);
             attendant.answer(call);
+            numberOfCallsdDispatched++;
         }
     }
 
     public Dispatcher(List<List<Attendant>> attendantsGroups) {
 
         this.attendantsGroups = attendantsGroups;
+        this.numberOfCallsdDispatched = 0;
         this.verbose = false;
     }
 
@@ -60,23 +63,23 @@ public class Dispatcher {
     }
 
 
-    public boolean dispatch(List<Call> calls) {
+    public Integer dispatch(List<Call> calls) {
         if(verbose) System.out.println("Dispatching calls...");
         if(noAttendants()){
-           return false;
+           return 0;
         }else{
             while(!callsAnswered(calls)){
                 calls.stream().forEach(call -> dispatchCall(call));
             }
-            return true;
+            return numberOfCallsdDispatched;
         }
     }
 
-    public void setVerbose(boolean verbose) {
+    public void setVerbose(Boolean verbose) {
         this.verbose = verbose;
     }
 
-    public boolean isVerbose() {
+    public Boolean isVerbose() {
         return verbose;
     }
 }

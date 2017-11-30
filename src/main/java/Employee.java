@@ -6,7 +6,7 @@ public abstract class Employee implements Attendant {
     private final String name;
     private final String type;
     private Call call;
-    private boolean busy;
+    private Boolean busy;
 
     public Employee(String name, String type){
         this.name = name;
@@ -23,7 +23,7 @@ public abstract class Employee implements Attendant {
     }
 
     @Override
-    public boolean isBusy() {
+    public Boolean isBusy() {
         return this.busy;
     }
 
