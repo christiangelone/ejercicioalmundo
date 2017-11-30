@@ -1,5 +1,9 @@
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class CallCenterTest {
@@ -9,7 +13,8 @@ public class CallCenterTest {
 
     @Before
     public void initialize(){
-        this.callCenter = new CallCenter(this.name);
+        List<List<Attendant>> attendantsGroups = new ArrayList<List<Attendant>>();
+        this.callCenter = new CallCenter(this.name,attendantsGroups);
     }
 
     @Test
@@ -34,5 +39,10 @@ public class CallCenterTest {
     public void shouldHaveAtLeastIOneDirector(){
         Integer numberOfDirectors = this.callCenter.getDirectors().size();
         assertTrue(numberOfDirectors >= 1);
+    }
+
+    @Test
+    public void shouldHaveDispatcher(){
+        assertNotNull(callCenter.getDispatcher());
     }
 }
