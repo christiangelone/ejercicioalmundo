@@ -1,4 +1,5 @@
 CallCenterTest.class
 DirectorTest.class
 SupervisorTest.class
+DispatcherTest.class
 OperatorTest.class
