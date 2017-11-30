@@ -11,20 +11,35 @@ public class CallCenter {
     private Dispatcher dispatcher;
 
 
-    public CallCenter(String name) {
+    public CallCenter(String name,Integer numOfOperators,Integer numOfSupervisor,Integer numOfDirectors) {
         this.name = name;
+
+        if (numOfOperators == null || numOfOperators <= 0) numOfOperators = 1;
+        if (numOfSupervisor == null || numOfSupervisor <= 0) numOfSupervisor = 1;
+        if (numOfDirectors == null || numOfDirectors <= 0) numOfDirectors = 1;
+
         this.operators = new ArrayList<Operator>();
-        this.operators.add(new Operator("DefaultOperator"));
+        for (int i = 0; i < numOfOperators; i++) {
+            this.operators.add(new Operator("Operator " + i));
+        }
+
         this.supervisors = new ArrayList<Supervisor>();
-        this.supervisors.add(new Supervisor("DefaultSupervisor"));
+        for (int i = 0; i < numOfOperators; i++) {
+            this.supervisors.add(new Supervisor("Supervisor " + i));
+        }
+
         this.directors = new ArrayList<Director>();
-        this.directors.add(new Director("DefaultDirector"));
+        for (int i = 0; i < numOfOperators; i++) {
+            this.directors.add(new Director("Director " + i));
+        }
+
         this.dispatcher = new Dispatcher();
         this.dispatcher.setAttendantsGroups(Arrays.<List<Attendant>>asList(
                 operatorsToAttendants(this.operators),
                 supervisorsToAttendants(this.supervisors),
                 directorsToAttendants(this.directors)
         ));
+        this.dispatcher.setVerbose(true);
     }
 
     private List<Attendant> operatorsToAttendants(List<Operator> ops){
@@ -78,5 +93,9 @@ public class CallCenter {
                 supervisorsToAttendants(this.supervisors),
                 directorsToAttendants(this.directors)
         ));
+    }
+
+    public void work(List<Call> calls) {
+        this.dispatcher.dispatch(calls);
     }
 }

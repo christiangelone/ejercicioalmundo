@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="CallTest" time="0" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="CallTest" time="0.088" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib"/>
@@ -67,7 +67,7 @@
   </properties>
   <testcase classname="CallTest" name="shouldHaveMinTime" time="0"/>
   <testcase classname="CallTest" name="shouldHaveMaxTimeDoubleThanMinTime" time="0"/>
-  <testcase classname="CallTest" name="shouldFreeOperatorWhenItEnd" time="0"/>
+  <testcase classname="CallTest" name="shouldFreeOperatorWhenItEnd" time="0.088"/>
   <testcase classname="CallTest" name="shouldFreeSupervisorWhenItEnd" time="0"/>
   <testcase classname="CallTest" name="shouldFreeDirectorWhenItEnd" time="0"/>
 </testsuite>

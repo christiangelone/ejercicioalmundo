@@ -42,10 +42,10 @@ public class DispatcherTest {
 
         List<Call> calls = new ArrayList<Call>();
         for (int i = 0; i < 10; i++) {
-            calls.add(new Call(5,10));
+            calls.add(new Call(i,5,10));
         }
 
-        assertEquals(new Integer(10),this.dispatcher.dispatch(calls));
+        assertTrue(this.dispatcher.dispatch(calls));
     }
 
     @Test
@@ -56,10 +56,10 @@ public class DispatcherTest {
 
         List<Call> calls = new ArrayList<Call>();
         for (int i = 0; i < 10; i++) {
-            calls.add(new Call(5,10));
+            calls.add(new Call(i,5,10));
         }
 
-        assertEquals(new Integer(0),this.dispatcher.dispatch(calls));
+        assertFalse(this.dispatcher.dispatch(calls));
     }
 
 }

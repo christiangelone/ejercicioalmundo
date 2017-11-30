@@ -1,7 +1,6 @@
 Attendant.class
 Call.class
 Director.class
-App.class
 Dispatcher.class
 Operator.class
 CallCenter.class

@@ -13,7 +13,7 @@ public class CallCenterTest {
 
     @Before
     public void initialize(){
-        this.callCenter = new CallCenter(this.name);
+        this.callCenter = new CallCenter(this.name,null,null,null);
     }
 
     @Test

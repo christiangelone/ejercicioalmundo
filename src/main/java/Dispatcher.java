@@ -1,4 +1,6 @@
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Dispatcher {
 
@@ -15,14 +17,14 @@ public class Dispatcher {
                 .orElse(true);
     }
 
-    private Boolean callsAnswered(List<Call> calls){
+    private Boolean AllCallsAnswered(List<Call> calls){
         return calls.stream()
-                .map(call -> call.isAswered())
+                .map(call -> call.isAnswered())
                 .reduce((answer1,answer2) -> answer1 && answer2)
                 .orElse(true);
     }
 
-    private List<Attendant> findFirstFreeAttendantsGroup(){
+    private synchronized List<Attendant> findFirstFreeAttendantsGroup(){
         for(List<Attendant> attendants: this.attendantsGroups){
             if(!areAllAttendantsBusy(attendants))
                 return attendants;
@@ -30,7 +32,7 @@ public class Dispatcher {
         return null;
     }
 
-    private Attendant findAnyFreeAttendant(List<Attendant> attendants){
+    private synchronized Attendant findAnyFreeAttendant(List<Attendant> attendants){
         return attendants
                 .stream()
                 .filter(attendant -> !attendant.isBusy())
@@ -42,12 +44,31 @@ public class Dispatcher {
         return attendantsGroups == null || attendantsGroups.isEmpty();
     }
 
-    private void dispatchCall(Call call){
+    private synchronized void dispatchCall(Call call){
         List<Attendant> attendants = findFirstFreeAttendantsGroup();
         if(attendants != null){
+            if(verbose) System.out.println("Attendants group is free!");
             Attendant attendant = findAnyFreeAttendant(attendants);
+            if(verbose) System.out.println("[Attendant " + attendant.getName() + "] will answer the call with id: " + call.getId() + "...");
             attendant.answer(call);
-            numberOfCallsdDispatched++;
+        }
+    }
+
+    private void dispatchThreadCalls(final List<Call> calls){
+        List<Thread> thread = new LinkedList<>();
+        for (int i = 0; i < calls.size(); i++) {
+            final Call call = calls.get(i);
+            thread.add(new Thread(() -> {
+                dispatchCall(call);
+            }));
+        }
+        for(Thread t: thread) t.start();
+        for(Thread t: thread) {
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -61,15 +82,24 @@ public class Dispatcher {
     }
 
 
-    public Integer dispatch(List<Call> calls) {
+    public Boolean dispatch(List<Call> calls) {
         if(verbose) System.out.println("Dispatching calls...");
         if(noAttendants()){
-           return 0;
+           return false;
         }else{
-            while(!callsAnswered(calls)){
-                calls.stream().forEach(call -> dispatchCall(call));
+            while(!AllCallsAnswered(calls)) {
+                List<Call> filteredCalls = calls
+                        .stream()
+                        .filter(c -> !c.isAnswered())
+                        .collect(Collectors.toList());
+
+                //no concurrent works!
+                filteredCalls.stream().forEach(c -> dispatchCall(c));
+
+                //concurrent works!
+                //dispatchThreadCalls(filteredCalls);
             }
-            return numberOfCallsdDispatched;
+            return true;
         }
     }
 

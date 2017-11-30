@@ -28,16 +28,16 @@ public abstract class Employee implements Attendant {
     }
 
     @Override
-    public void answer(Call call) {
+    public synchronized void answer(Call call) {
         if(!isBusy()){
+            this.busy = true;
             call.setAttendant(this);
             call.answer();
-            this.busy = true;
         }
     }
 
     @Override
-    public void free() {
+    public synchronized void free() {
         this.busy = false;
     }
 }

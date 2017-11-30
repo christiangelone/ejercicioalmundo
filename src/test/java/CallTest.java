@@ -11,7 +11,7 @@ public class CallTest {
     public void shouldHaveMinTime(){
         Integer assignedMinTime = 5;
         Integer assignedMaxTime = 10;
-        call = new Call(assignedMinTime,assignedMaxTime);
+        call = new Call(1,assignedMinTime,assignedMaxTime);
         Integer time = call.getMinTime();
         assertEquals(assignedMinTime,time);
     }
@@ -20,7 +20,7 @@ public class CallTest {
     public void shouldHaveMaxTimeDoubleThanMinTime(){
         Integer assignedMinTime = 5;
         Integer assignedMaxTime = 10;
-        call = new Call(assignedMinTime,assignedMaxTime);
+        call = new Call(1,assignedMinTime,assignedMaxTime);
         Integer time = call.getMaxTime();
         assertEquals(assignedMaxTime,time);
     }
@@ -29,7 +29,7 @@ public class CallTest {
     public void shouldFreeOperatorWhenItEnd(){
         Integer assignedMinTime = 5;
         Integer assignedMaxTime = 10;
-        call = new Call(assignedMinTime,assignedMaxTime);
+        call = new Call(1,assignedMinTime,assignedMaxTime);
 
         Attendant attendant = new Operator("Op");
         attendant.answer(call);
@@ -42,7 +42,7 @@ public class CallTest {
     public void shouldFreeSupervisorWhenItEnd(){
         Integer assignedMinTime = 5;
         Integer assignedMaxTime = 10;
-        call = new Call(assignedMinTime,assignedMaxTime);
+        call = new Call(1,assignedMinTime,assignedMaxTime);
 
         Attendant attendant = new Supervisor("Sup");
         attendant.answer(call);
@@ -55,7 +55,7 @@ public class CallTest {
     public void shouldFreeDirectorWhenItEnd(){
         Integer assignedMinTime = 5;
         Integer assignedMaxTime = 10;
-        call = new Call(assignedMinTime,assignedMaxTime);
+        call = new Call(1,assignedMinTime,assignedMaxTime);
 
         Attendant attendant = new Director("Dir");
         attendant.answer(call);
