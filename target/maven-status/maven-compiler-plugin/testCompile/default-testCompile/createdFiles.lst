@@ -3,3 +3,4 @@ DirectorTest.class
 SupervisorTest.class
 DispatcherTest.class
 OperatorTest.class
+CallTest.class

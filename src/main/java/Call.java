@@ -1,7 +1,9 @@
 public class Call {
     private boolean answered;
+    private Integer minDuration;
 
-    public Call(int durationInSeconds) {
+    public Call(int minDurationInSeconds) {
+        this.minDuration = minDurationInSeconds;
         this.answered = false;
     }
 
@@ -11,5 +13,9 @@ public class Call {
 
     public void answer() {
         this.answered = true;
+    }
+
+    public Integer getMinTime() {
+        return this.minDuration;
     }
 }
